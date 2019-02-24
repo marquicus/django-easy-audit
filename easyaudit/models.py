@@ -70,9 +70,9 @@ class LoginEvent(models.Model):
 
 
 class RequestEvent(models.Model):
-    url = models.TextField(null=False, db_index=True)
+    url = models.TextField(null=False, db_index=True, max_length=2048)
     method = models.CharField(max_length=20, null=False, db_index=True)
-    query_string = models.TextField(null=True)
+    query_string = models.TextField(null=True, max_length=2048)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True,
                              on_delete=models.SET_NULL)
     remote_ip = models.CharField(max_length=50, null=True, db_index=True)
